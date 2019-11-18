@@ -1,0 +1,182 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ValidatePassengerBo",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/PFMService"
+    }
+  ],
+  "paths": {
+    "/passenger/validate": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuthCreds": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "workstationId",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "x-examples": {},
+                "type": "object",
+                "title": "",
+                "properties": {
+                  "dataType": {
+                    "type": "string",
+                    "enum": [
+                      "PNR",
+                      "BARCODE"
+                    ]
+                  },
+                  "pnrData": {
+                    "type": "object",
+                    "properties": {
+                      "pnr": {
+                        "type": "string"
+                      },
+                      "fname": {
+                        "type": "string"
+                      },
+                      "lname": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "barodeData": {
+                    "type": "object",
+                    "properties": {
+                      "barcode": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "validationTypes": {
+                    "type": "array",
+                    "enum": [
+                      "DUPLICATE_CHECK",
+                      "FIDS_CHECK",
+                      "SEQ_CHECK",
+                      "DCS_CHECK"
+                    ],
+                    "items": {}
+                  },
+                  "requestId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "dataType",
+                  "validationTypes",
+                  "requestId"
+                ],
+                "description": "RequestBo sent by touchpoint to PFM Server "
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "OAuthCreds": {
+        "type": "oauth2"
+      }
+    },
+    "schemas": {
+      "ValidationRequestBo": {
+        "x-examples": {},
+        "type": "object",
+        "title": "",
+        "properties": {
+          "dataType": {
+            "type": "string",
+            "enum": [
+              "PNR",
+              "BARCODE"
+            ]
+          },
+          "pnrData": {
+            "type": "object",
+            "properties": {
+              "pnr": {
+                "type": "string"
+              },
+              "fname": {
+                "type": "string"
+              },
+              "lname": {
+                "type": "string"
+              }
+            }
+          },
+          "barodeData": {
+            "type": "object",
+            "properties": {
+              "barcode": {
+                "type": "string"
+              }
+            }
+          },
+          "validationTypes": {
+            "type": "array",
+            "enum": [
+              "DUPLICATE_CHECK",
+              "FIDS_CHECK",
+              "SEQ_CHECK",
+              "DCS_CHECK"
+            ],
+            "items": {}
+          },
+          "requestId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dataType",
+          "validationTypes",
+          "requestId"
+        ],
+        "description": "RequestBo sent by touchpoint to PFM Server "
+      }
+    }
+  }
+}

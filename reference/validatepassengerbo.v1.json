@@ -12,11 +12,19 @@
   "paths": {
     "/passenger/validate": {
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "ValidatePassenger",
         "tags": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request"
@@ -176,6 +184,75 @@
           "requestId"
         ],
         "description": "RequestBo sent by touchpoint to PFM Server "
+      },
+      "ValidationRespnseBo": {
+        "title": "ValidationRespnseBo",
+        "type": "object",
+        "x-examples": {
+          "example-1": {}
+        },
+        "properties": {
+          "validationResult": {
+            "type": "object",
+            "properties": {
+              "dcs_checkResult": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "enum": [
+                      "SUCCESS",
+                      "FAILURE"
+                    ]
+                  },
+                  "failureReson": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "failureCode": {
+                          "type": "string"
+                        },
+                        "failureDescription": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "result"
+                ]
+              },
+              "fids_checkResuLt": {
+                "type": "object",
+                "properties": {
+                  "result": {
+                    "type": "string",
+                    "enum": [
+                      "SUCCESS",
+                      "FAILURE"
+                    ]
+                  },
+                  "failureReason": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "failureCode": {
+                          "type": "string"
+                        },
+                        "failureDescription": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

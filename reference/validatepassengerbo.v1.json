@@ -125,7 +125,7 @@
     },
     "/passenger/pnr/{pnr}": {
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "GET Passengers by PNR",
         "tags": [],
         "responses": {
           "200": {

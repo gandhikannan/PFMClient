@@ -320,6 +320,24 @@
                             "TRANSIT_PASSENGER",
                             "STANDBY_PASSENGER"
                           ]
+                        },
+                        "referenceKeys": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "enum": [
+                                  "DIGIYATRA_ID",
+                                  "FQTVNUMBER"
+                                ]
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            }
+                          }
                         }
                       }
                     }

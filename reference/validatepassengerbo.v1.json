@@ -192,6 +192,7 @@
         "x-examples": {
           "example-1": {}
         },
+        "description": "",
         "properties": {
           "validationResult": {
             "type": "object",
@@ -324,10 +325,12 @@
                           "PAX_PASSED_EXIT_GATE",
                           "TRANSIT_PASSENGER",
                           "STANDBY_PASSENGER"
-                        ]
+                        ],
+                        "description": "*NOT AVAILABLE IN PFM*"
                       },
                       "seqNumber": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "*NOT AVAILABLE IN SITA PFM*"
                       },
                       "lname": {
                         "type": "string"

@@ -122,6 +122,66 @@
           }
         }
       }
+    },
+    "/passenger/pnr/{pnr}": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PassengerDetailsBo"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuthCreds": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "workstationId"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "pnr",
+          "in": "path",
+          "required": true
+        }
+      ]
     }
   },
   "components": {
@@ -308,9 +368,6 @@
                             },
                             "value": {
                               "type": "string"
-                            },
-                            "": {
-                              "type": "string"
                             }
                           }
                         }
@@ -342,6 +399,51 @@
                         "type": "boolean"
                       }
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "PassengerDetailsBo": {
+        "title": "PassengerDetailsBo",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "pnr": {
+              "type": "string"
+            },
+            "seqnumber": {
+              "type": "string"
+            },
+            "rawbarcode": {
+              "type": "string"
+            },
+            "fname": {
+              "type": "string"
+            },
+            "lnamd": {
+              "type": "string"
+            },
+            "infant": {
+              "type": "boolean"
+            },
+            "referenceKeys": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "enum": [
+                      "DIGIYATRA_ID",
+                      "FQTVNUMBER"
+                    ]
+                  },
+                  "value": {
+                    "type": "string"
                   }
                 }
               }

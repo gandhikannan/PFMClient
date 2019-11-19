@@ -3,7 +3,7 @@
   "info": {
     "title": "ValidatePassengerBo",
     "version": "1.0",
-    "description": ""
+    "description": "Validate Passsenger status against SITA PFM Service"
   },
   "servers": [
     {

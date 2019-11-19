@@ -7,7 +7,8 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/PFMService"
+      "url": "http://aai.stg.sita.com:3000/PFMValidationService",
+      "description": "AAI Staging Env"
     }
   ],
   "paths": {
@@ -307,6 +308,18 @@
                         },
                         "primary": {
                           "type": "boolean"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "CHECKED_IN",
+                            "BAGGAGE_CHECKED_IN_PAX_NOT_CHCKED_IN",
+                            "BAGGAGE_AND_PAX_CHECKED_IN",
+                            "PAX_PASSED_SECURITY_CHECK",
+                            "PAX_PASSED_EXIT_GATE",
+                            "TRANSIT_PASSENGER",
+                            "STANDBY_PASSENGER"
+                          ]
                         }
                       }
                     }
